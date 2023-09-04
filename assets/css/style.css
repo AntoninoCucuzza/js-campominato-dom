@@ -25,6 +25,13 @@ border: #07575B;
 
 }
 
+.bg_lose{
+    background-color: red;
+    color: black;
+    border: red;
+}
+
+
 
 .container_field{
     display: flex;
