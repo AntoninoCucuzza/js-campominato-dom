@@ -49,8 +49,11 @@ border: #07575B;
     margin-top: 3rem;
 
 }
-
+.d-flex{
+    display: flex;
+    justify-content: space-between;
+}
 .btn{
     width: 100px;
-    height: 75px;
+    height: 50px;
 }
