@@ -25,24 +25,19 @@ difficoltà 3 ⇒ 49 caselle, con un numero compreso tra 1 e 49, divise in 7 cas
 
 
 const fieldEl = document.querySelector('.container_field');
-
-let limit = 100
+const bottone = document.querySelector('.btn')
+let limit 
 const bombe = 16
-const listaBombe = []
+let listaBombe = []
 let points = 0;
 
 
 
-for (let i = 0; i < bombe; i++) {
-    const randomN = Math.floor(Math.random() * limit);
-    listaBombe.push(randomN)
-    
-}
-
-console.log(listaBombe);
 
 
-function griglia(limit) {
+
+function griglia(limit, listaBombe) {
+    let gameOver = false
     
     for (let i = 0; i < limit; i++) {
         const casellaEL = document.createElement('div')
@@ -53,23 +48,48 @@ function griglia(limit) {
 
         
             casellaEL.addEventListener('click', function(){
-                casellaEL.classList.toggle('bg_active') 
-                casellaEL.append()
-                console.log(`e stata attivata la casella ${i + 1}`);
-            
+
+
+                if(listaBombe.includes(i + 1)){
+                   
+                    casellaEL.classList.add('bg_lose')
+                    casellaEL.append()
+                    console.log(`la casella ${i + 1} e una bomba hai perso`);
+                }else{
+                     casellaEL.classList.toggle('bg_active') 
+                     casellaEL.append()
+                     console.log(`e stata attivata la casella ${i + 1}`);
+                 
+
+                }
+
             })
     } 
     
 }
 
+function bombGenerator(bombe, limit) {
+    let i = 0
+    while (i < bombe) {
+        randomN = Math.ceil(Math.random() * limit);
+        if (!listaBombe.includes(randomN)) {
+            listaBombe.push(randomN);
+            i++;
+        }
+    }
 
-const bottone = document.querySelector('.btn')
+    return listaBombe;
+}
+
+
 
 bottone.addEventListener('click', function(){
     const difficulty = document.getElementById('difficulty').value
     fieldEl.innerHTML = ''
     limit = difficulty
-    griglia(limit)
+    listaBombe = bombGenerator(bombe, limit);
+    console.log(listaBombe);
+    griglia(limit,listaBombe)
 })
 
 
