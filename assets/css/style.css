@@ -8,6 +8,9 @@ body{
     background-color: #363636;
 }
 
+.white{
+    color: white;
+}
 .box{
     display: flex;
     width: calc(100% / 10);
@@ -27,7 +30,7 @@ border: #07575B;
 
 .bg_lose{
     background-color: red;
-    color: black;
+    color: red;
     border: red;
 }
 

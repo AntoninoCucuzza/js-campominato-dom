@@ -26,18 +26,27 @@ difficoltà 3 ⇒ 49 caselle, con un numero compreso tra 1 e 49, divise in 7 cas
 
 const fieldEl = document.querySelector('.container_field');
 const bottone = document.querySelector('.btn')
+const result = document.getElementById('risultato')
 
-const bombe = 16
+const bombe = 16 
 let listaBombe = []
 let limit 
-let points = 0;
+let points = 0; 
 let gameOver = false
 console.log(gameOver);
 
 
 
 
-
+/**
+ * 
+ * 
+ * quello che questa funzione fa e creare una griglia e adattarla in base alla difficolta scelta e quando una casella viene cliccata si colora se blu t'appost e +1 ai punti se rossa sei scoppiato e ti compare un'allerta di sconfitta + punteggio se il giocatore riesce a non toccare nessuna bomba allora comparira un allerta con scritto 'hai vinto' e in entrambi i casi ricarichera la pagina
+ * 
+ * 
+ * @param {number} limit 
+ * @param {listanumeri} listaBombe 
+ */
 function griglia(limit, listaBombe) {
     
     for (let i = 0; i < limit; i++) {
@@ -48,7 +57,7 @@ function griglia(limit, listaBombe) {
         casellaEL.style.width = `calc(100% / ${Math.sqrt(limit)})`
 
         
-            casellaEL.addEventListener('click', function(){
+            casellaEL.addEventListener('click', function (){
 
 
                 if(listaBombe.includes(i + 1)){
@@ -57,8 +66,8 @@ function griglia(limit, listaBombe) {
                     gameOver = true 
 
                     if(gameOver = true){
-                        alert(`hai perso il tuo punteggio e ${points}`)
-                        location.reload();
+                        result.append(`hai perso il tuo punteggio e ${points}`)
+
                     }
 
                 }else{
@@ -68,11 +77,10 @@ function griglia(limit, listaBombe) {
 
                     if (points == (limit  - listaBombe.length)){
                         gameOver = true
-
+                        
                         if (gameOver =true) {
-                            alert('hai vinto hai raggiunto il massimo dei punti')
-                            location.reload()
-    
+                            result.append(`hai vinto hai raggiunto il massimo dei punti`)   
+                            
                         }
                     }
                 }
@@ -99,8 +107,14 @@ function bombGenerator(bombe, limit) {
 
 bottone.addEventListener('click', function(){
     const difficulty = document.getElementById('difficulty').value
+    
     fieldEl.innerHTML = ''
+    result.innerHTML = ''
+    points = 0
+    gameOver = false
     listaBombe = []
+
+
     limit = difficulty
     listaBombe = bombGenerator(bombe, limit);
     
