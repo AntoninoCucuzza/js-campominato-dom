@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #363636;
+}
+
+.box{
+    display: flex;
+    width: calc(100% / 10);
+    aspect-ratio: 1 / 1;
+    border: 1px solid white;
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg_active{
+background-color: #07575B ;
+color: #07575B ;
+border: #07575B;
+
+}
+
+
+.container_field{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80% ;
+    max-width: 1080px;
+    margin: 0 auto ;
+    margin-top: 3rem;
+}
+
+.container{
+    width: 80% ;
+    max-width: 1080px;
+    margin: 0 auto ;
+    margin-top: 3rem;
+
+}
+
+.btn{
+    width: 100px;
+    height: 75px;
+}
