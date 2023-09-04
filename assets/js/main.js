@@ -67,9 +67,10 @@ const bottone = document.querySelector('.btn')
 
 bottone.addEventListener('click', function(){
     const difficulty = document.getElementById('difficulty').value
+    fieldEl.innerHTML = ''
     limit = difficulty
     griglia(limit)
-}, {once : true})
+})
 
 
 
